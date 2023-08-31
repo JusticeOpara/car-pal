@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { Navbar, Footer } from '../components'
 
 export const metadata: Metadata = {
-  title: 'Car Pal',
+  title: 'CarPal',
   description: 'Discover the best cars in the world',
 }
 

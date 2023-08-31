@@ -9,3 +9,8 @@ export interface CustomButtonProps{
     
     btnType?:"button" | "submit"
 }
+
+export interface SearchManufacturerProps{
+    manufacturer: String;
+    setManufacturer: (manufacturer : String)=> void;
+}
