@@ -15,9 +15,10 @@ const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacture
         ))
     console.log(filteredManufacturers, "--filteredManufacturers")
 
+
     return (
-        <div className="search-manufactuter">
-            <Combobox>
+        <div className="search-manufacturer ">
+            <Combobox value={manufacturer} onChange={setManufacturer}>
                 <div className='relative w-full'>
 
                     <Combobox.Button className="absloute top-[14px]">
@@ -38,12 +39,29 @@ const SearchManufacturer = ({ manufacturer, setManufacturer }: SearchManufacture
                         afterLeave={() => setQuery('')}>
 
                         <Combobox.Options className="">
-                            {filteredManufacturers.length === 0 && query !== " " && (
+                            {filteredManufacturers.map((item) => (
                                 <Combobox.Option
-                                vaule={query}>
+                                    key={item}
+                                    value={item}
+                                    className={({ active }) => `relative search-manufacturer__option ${active ? "bg-primary-blue text-white" : "text-gray-900"}`}>
+
+                                    {({ selected, active }) => (
+                                        <>
+                                            <span className={`block truncate ${selected ? "font-medium" : "font-normal"}`}>
+                                                {item}
+                                            </span>
+
+                                            {/* Show an active blue background color if the option is selected */}
+                                            {selected ? (
+                                                <span className={`absolute inset-y-0 left-0 flex items-center pl-3 ${active ? "text-white" : "text-pribg-primary-purple"}`}
+                                                ></span>
+                                            ) : null}
+                                        </>
+                                    )}
 
                                 </Combobox.Option>
-                            )} 
+                            ))
+                            }
                         </Combobox.Options>
 
                     </Transition>

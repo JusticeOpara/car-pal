@@ -1,34 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Car Hub
+
+- [👉🏼 Live Demo](https://github.com/JusticeOpara/nft-bazaar.git)
+
+## About The Project
+
+A cutting-edge contemporary application harnessing the full spectrum of advancements within Next.js 13, capitalizing on its state-of-the-art capabilities, including server-side rendering and the robust app router.
+
+### Built With
+
+- [Next.Js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Headless UI](https://headlessui.com/)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- [Install Node.JS](https://nodejs.org/en)
+- [Install Git](https://git-scm.com/)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Create a free account at [Rapid API](https://rapidapi.com/hub)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Get a free API Key at [Cars by API-Ninjas](https://rapidapi.com/apininjas/api/cars-by-api-ninjas)
 
-## Learn More
+3. Clone the repo
 
-To learn more about Next.js, take a look at the following resources:
+    ```sh
+    git clone https://github.com/JusticeOpara/car-pal.git
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Install NPM packages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```sh
+    npm install
+    ```
 
-## Deploy on Vercel
+5. Enter your API in `utils/index.ts`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    ```js
+    const headers = {"X-RapidAPI-Key": API_KEY,
+    }
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Usage
+
+1. Run `npm run dev` to see the website which runs on `localhost:3000` port
+
+2. Deploy it on [Vercel](https://vercel.com/)
