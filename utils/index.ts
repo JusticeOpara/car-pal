@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
+import { CarProps } from '../types';
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
   const basePricePerDay = 50; // Base rental price per day in dollars
@@ -19,7 +20,7 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 export async function getCarsByModel(model: string): Promise<any> {
   const options: AxiosRequestConfig = {
     method: 'GET',
-    url: 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla',
+    url: 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=q3',
     params: { model },
     headers: {
       'X-RapidAPI-Key': '464c094e71msh8f9b602b941bccfp1d5cafjsn3b122c1a90dc',
@@ -35,6 +36,22 @@ export async function getCarsByModel(model: string): Promise<any> {
     throw error;
   }
 }
+
+
+export const generateCarImageUrl = (car: CarProps, angle?: string) => {
+  const url = new URL("https://cdn.imagin.studio/getimage");
+  const { make, model, year } = car;
+
+  url.searchParams.append('customer', 'hrjavascript-mastery');
+  url.searchParams.append('make', make);
+  url.searchParams.append('modelFamily', model.split(" ")[0]);
+  url.searchParams.append('zoomType', 'fullscreen');
+  url.searchParams.append('modelYear', `${year}`);
+  // url.searchParams.append('zoomLevel', zoomLevel);
+  url.searchParams.append('angle', `${angle}`);
+
+  return `${url}`;
+} 
 
 // // Example usage:
 // getCarsByModel('corolla')

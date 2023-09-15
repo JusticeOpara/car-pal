@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-16 py-10">
 
         <div className="flex flex-col justify-start items-start gap-6">
-          <Image src='/logo.svg' alt="logo" className="object-contain" width={118} height={18} />
+          <Image src='/logo.png' alt="logo" className="object-contain" width={118} height={18} />
           <p className="text-base text-gray-700"> Carpal 2023<br /> All right reserved & copy; </p>
         </div>
 
