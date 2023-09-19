@@ -15,10 +15,10 @@ const CarCard = ({ car }: CarCardProps) => {
 
     const carRent = calculateCarRent(city_mpg, year)
     return (
-        <div className='car-card group'>
+        <div className='car-card group bg-black'>
             <div className="car-card__content">
                 <h2 className="car-card__content-title">
-                    {make} {model}
+                    {make} {model} 
                 </h2>
             </div>
 
@@ -37,6 +37,7 @@ const CarCard = ({ car }: CarCardProps) => {
                 <Image src={generateCarImageUrl(car)} alt="car model" fill priority className="object-contain" />
 
             </div>
+            
             <div className="relative flex w-full mt-2">
                 <div className="flex group-hover:invisible w-full justify-between text-grey ">
                     <div className="flex flex-col justify-center items-center gap-2">

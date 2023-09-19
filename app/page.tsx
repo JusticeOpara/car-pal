@@ -1,4 +1,4 @@
-import { Hero, SearchBar, CustomFilter, CarCard } from '../components'
+import { Hero, SearchBar, CustomFilter, CarCard,ShowMore } from '../components'
 import Image from 'next/image'
 import { fetchCars } from '../utils'
 import { yearsOfProduction,fuels } from '../constants'
@@ -38,12 +38,16 @@ export default async function Home({ searchParams }) {
 
         {!isDataEmpty ? (
           <section>
-            <div className='home__cars-wrapper'>
+            <div className='home__cars-wrapper '>
               {allCars?.map((car) => (
 
                 <CarCard car={car} key={car} />
 
               ))}
+              <ShowMore
+              pageNumber={(searchParams.limit || 10)/10}
+              isNext={(searchParams.limit || 10) > allCars.length}
+              />
             </div>
 
           </section>

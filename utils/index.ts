@@ -1,4 +1,4 @@
-// import axios, { AxiosRequestConfig } from 'axios';
+ import axios, { AxiosRequestConfig } from 'axios';
 import { CarProps ,FilterProps} from '../types';
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
@@ -17,47 +17,48 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 };
 
 
-// export async function fetchCars(model: string, filters:FilterProps): Promise<any> {
-//   const {manunfactuer,limit,year,fuel}= filters
-//   const options: AxiosRequestConfig = {
-//     method: 'GET',
-//     url: 'https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=q3',
-//     params: { model ,filters},
-//     headers: {
-//       'X-RapidAPI-Key': '464c094e71msh8f9b602b941bccfp1d5cafjsn3b122c1a90dc',
-//       'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com',
-//     },
-//   };
-
-//   try {
-//     const response = await axios.request(options);
-//     console.log(response,"--response")
-//     return response.data;
-//   } catch (error) {
-//     throw error;
-//   }
-// }
-
-export async function fetchCars(filters: FilterProps) {
+export async function fetchCars( filters:FilterProps): Promise<any> {
   const { manufacturer, year, model, limit, fuel } = filters;
 
-  // Set the required headers for the API request
-  const headers: HeadersInit = {
-    "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY || "",
-    "X-RapidAPI-Host": "cars-by-api-ninjas.p.rapidapi.com",
+  const options: AxiosRequestConfig = {
+    method: 'GET',
+    url: `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,
+    // params: { model ,filters},
+    headers: {
+      'X-RapidAPI-Key': '464c094e71msh8f9b602b941bccfp1d5cafjsn3b122c1a90dc',
+      'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com',
+    },
   };
 
-  // Set the required headers for the API request
-  const response = await fetch(
-    `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,
-    { headers: headers, }
-  );
-
-  // Parse the response as JSON
-  const result = await response.json();
-
-  return result;
+  try {
+    const response = await axios.request(options);
+    console.log(response,"--response")
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
 }
+
+// export async function fetchCars(filters: FilterProps) {
+//   const { manufacturer, year, model, limit, fuel } = filters;
+
+//   // Set the required headers for the API request
+//   const headers: HeadersInit = {
+//     "X-RapidAPI-Key": "464c094e71msh8f9b602b941bccfp1d5cafjsn3b122c1a90dc" || "",
+//     "X-RapidAPI-Host": "cars-by-api-ninjas.p.rapidapi.com",
+//   };
+
+//   // Set the required headers for the API request
+//   const response = await fetch(
+//     `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,
+//     { headers: headers, }
+//   );
+
+//   // Parse the response as JSON
+//   const result = await response.json();
+
+//   return result;
+// }
 
 
 
