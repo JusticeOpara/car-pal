@@ -1,5 +1,10 @@
 import { MouseEventHandler } from "react";
 
+
+export interface HomeProps {
+    searchParams: FilterProps;
+  }
+  
 export interface CustomButtonProps{
     title: String;
     containerStyles?: String;
@@ -38,15 +43,17 @@ export interface FilterProps{
       model:string,
 }
 
-export interface OptionProps{
-title:string,
-value: string
-}
 
-export interface CustomFilterProps{
-title: string,
-options: OptionProps[]
-}
+export interface OptionProps {
+    title: string;
+    value: string;
+  }
+  
+  export interface CustomFilterProps {
+    title: string;
+    options: OptionProps[];
+  }
+  
 
 export interface ShowMoreProps{
 pageNumber: number,
