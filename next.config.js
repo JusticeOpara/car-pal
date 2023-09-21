@@ -2,10 +2,11 @@
 const nextConfig = {
     images:{ 
         domains:['cdn.imagin.studio'],
+
         typescript:{
-            ignoreBuildErrors:true
+            ignoreBuildErrors:true,
         }
     }
 }
 
-module.exports = nextConfig
+export default nextConfig
