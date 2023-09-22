@@ -39,27 +39,6 @@ export async function fetchCars( filters:FilterProps): Promise<any> {
   }
 }
 
-// export async function fetchCars(filters: FilterProps) {
-//   const { manufacturer, year, model, limit, fuel } = filters;
-
-//   // Set the required headers for the API request
-//   const headers: HeadersInit = {
-//     "X-RapidAPI-Key": "464c094e71msh8f9b602b941bccfp1d5cafjsn3b122c1a90dc" || "",
-//     "X-RapidAPI-Host": "cars-by-api-ninjas.p.rapidapi.com",
-//   };
-
-//   // Set the required headers for the API request
-//   const response = await fetch(
-//     `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,
-//     { headers: headers, }
-//   );
-
-//   // Parse the response as JSON
-//   const result = await response.json();
-
-//   return result;
-// }
-
 
 
 export const generateCarImageUrl = (car: CarProps, angle?: string ) => {
@@ -76,6 +55,8 @@ export const generateCarImageUrl = (car: CarProps, angle?: string ) => {
 
   return `${url}`;
 } 
+
+
 
 export const updateSearchParams = (type: string, value: string) => {
   // Get the current URL search params
