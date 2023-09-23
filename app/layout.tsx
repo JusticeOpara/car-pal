@@ -2,6 +2,8 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Navbar, Footer } from '../components'
+// import { ReduxProvider } from '../redux/provider'
+
 
 export const metadata: Metadata = {
   title: 'CarPal',
@@ -14,13 +16,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    
-     <html lang='en'>
-     <body className='relative bg-black text-gray-300 '>
-       <Navbar />
-       {children}
-       <Footer />
-     </body>
-   </html>
+
+    <html lang='en'>
+      <body className='relative bg-black text-gray-300 '>
+        {/* <ReduxProvider> */}
+          <Navbar />
+          {children}
+          <Footer />
+
+        {/* </ReduxProvider> */}
+
+
+      </body>
+    </html>
   )
 }
