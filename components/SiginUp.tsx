@@ -1,18 +1,30 @@
 "use client"
 import firebase from '../firebase/firebaseConfig'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from "react-redux"
 import { setLoading, setUser } from '../redux/authSlice'
-import { userRouter } from "next/router"
+import { useRouter } from "next/router";
+
+
 
 const SiginUp = () => {
+
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [blankError, setBlankError] = useState("")
   const [invaildEmail, setInvaildEmail] = useState("")
-  const Router = userRouter()
+
+  const Router = useRouter()
 
   const dispatch = useDispatch()
+
+  useEffect(()=>{
+  if(typeof window !== "undefined"){
+   const storedUser = localStorage.getItem('user')
+   const parsedUser = storedUser ? JSON.parse(storedUser) : null
+   dispatch(setUser({email:parsedUser?.email || null}))
+  }
+  },[dispatch])
 
   const handleSigup = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault
@@ -40,6 +52,7 @@ const SiginUp = () => {
 
     } catch (error) {
       const typeError = error as Error
+      dispatch(setError(typeError.message))
     } finally {
       dispatch(setLoading(false))
     }
