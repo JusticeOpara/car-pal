@@ -25,7 +25,7 @@ export async function fetchCars( filters:FilterProps): Promise<any> {
     url: `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`,
     // params: { model ,filters},
     headers: {
-      'X-RapidAPI-Key': 'c71fc80433msh575ce3744223e4fp181cdbjsn7c4cc5754db3',
+      'X-RapidAPI-Key': process.env.X_RAPIDAPI_KEY,
       'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com',
     },
   };
