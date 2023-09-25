@@ -19,12 +19,12 @@ export default function RootLayout({
 
     <html lang='en'>
       <body className='relative bg-black text-gray-300 '>
-        {/* <ReduxProvider> */}
+        {/* <ReduxProvider>  */}
           <Navbar />
           {children}
           <Footer />
 
-        {/* </ReduxProvider> */}
+         {/* </ReduxProvider>  */}
 
 
       </body>
