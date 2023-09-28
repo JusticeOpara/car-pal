@@ -2,7 +2,8 @@
 const nextConfig = {
     images:{ 
         domains:['cdn.imagin.studio'],
-    
+
+        
     },
     typescript:{
         // !! WARN !!

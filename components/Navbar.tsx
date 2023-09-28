@@ -1,34 +1,159 @@
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { CustomButton } from '.'
+import Image from "next/image";
+import Link from "next/link";
+// import { CustomButton } from '.'
 
+import { useEffect, useState } from "react";
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
-  const handleScroll = () => {
+  const { data: session } = useSession();
+  const router = useRouter();
+  const [profileClick, setProfileClick] = useState(false);
 
-  }
+  useEffect(() => {
+    setTimeout(() => {
+      setProfileClick(false);
+    }, 6000);
+  }, [profileClick == true]);
+
+  // useEffect(()=>{
+
+  //   if (!session?.user) {
+  //     router.push("/Login");
+  //     setProfileClick()
+  //   }
+  //   setTimeout()
+
+  // },[session,router])
+
   return (
-    <header className='w-full absolute z-10'>
-      <nav className='max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-4'>
-        <Link href="/" className='flex justify-center items-center'>
+    session?.user && (
+      <header className="w-full absolute z-10">
+        <nav className="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 px-6 py-4">
+          <Link href="/" className="flex justify-center items-center">
+            <Image
+              src="/logo.png"
+              className="object-contain"
+              alt="Car Pal Logo"
+              width={118}
+              height={18}
+            />
+          </Link>
 
-          <Image  src='/logo.png'
-            className='object-contain'
-            alt="Car Pal Logo"
-            width={118}
-            height={18} />
+          {/* {session?.user ? (
+            <>
+              <button
+                onClick={() => signOut}
+                className="text-primary-blue py-4 rounded-full bg-gray-300 min-w-[130px]"
+              >
+                Sign In
+              </button>
+            </>
+          ) : null} */}
 
-        </Link>
-        <CustomButton
-            title="Sign in"
-            btnType="button"
-            containerStyles="text-primary-blue rounded-full bg-gray-300 min-w-[130px]"
-        />
+          <div>
+            {session?.user ? (
+              <>
+                <Image
+                  src="/google.svg"
+                  alt="user"
+                  width={40}
+                  height={40}
+                  onClick={() => setProfileClick(!profileClick)}
+                  className="rounded-full cursor-pointer
+               hover:border-[2px] border-blue-500"
+                />
 
-      </nav>
-    </header>
-  )
-}
+                {profileClick ? (
+                  <div className="absolute bg-white p-3 shadow-md border-[1px] mt-2 z-30 right-4 ">
+                    <h2 className="cursor-pointer hover:text-blue-500 hover:font-bold"
+                      onClick={() => signOut()}>
+                      Logout
+                    </h2>
+                  </div>
+                ) : null}
+                
+              </>
+            ) : null}
+          </div>
+        </nav>
+      </header>
+    )
+  );
+};
 
-export default Navbar
+export default Navbar;
+
+// function HeaderNavBar() {
+//   const { data: session } = useSession();
+//   const [profileClick,setProfileClick]=useState(false);
+
+//   useEffect(()=>{
+//     setTimeout(()=>{
+//       setProfileClick(false)
+//     },6000)
+//   },[profileClick==true])
+
+//   return session?.user&&(
+//    <div
+//       className="flex items-center
+//     justify-between p-2 shadow-md"
+//     >
+//       <div className="flex gap-7 items-center">
+//         <Image src="/logo.png" alt="logo" width={50} height={50} />
+//         <h2 className="cursor-pointer hover:text-blue-500">Home</h2>
+//         <h2 className="cursor-pointer hover:text-blue-500">Favourite</h2>
+//       </div>
+//       <div
+//         className=" bg-gray-100 p-[6px] rounded-md
+//       w-[40%] gap-3 hidden md:flex"
+//       >
+//         <svg
+//           xmlns="http://www.w3.org/2000/svg"
+//           fill="none"
+//           viewBox="0 0 24 24"
+//           strokeWidth={1.5}
+//           stroke="currentColor"
+//           className="w-6 h-6"
+//         >
+//           <path
+//             strokeLinecap="round"
+//             strokeLinejoin="round"
+//             d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+//           />
+//         </svg>
+//         <input
+//           type="text"
+//           placeholder="Search"
+//           className="bg-transparent
+//         outline-none w-full"
+//         />
+//       </div>
+//       <div>
+//         {session?.user ? (
+//           <>
+//             <Image
+//               src={session.user.image}
+//               alt="user"
+//               width={40}
+//               height={40}
+//               onClick={()=>setProfileClick(!profileClick)}
+//               className="rounded-full cursor-pointer
+//               hover:border-[2px] border-blue-500"
+//             />
+//            {profileClick? <div className="absolute bg-white p-3
+//             shadow-md border-[1px] mt-2 z-30
+//             right-4 ">
+//               <h2 className="cursor-pointer
+//                hover:text-blue-500 hover:font-bold"
+//                onClick={()=>signOut()}>Logout</h2>
+//             </div>:null}
+//           </>
+//         ) : null}
+//       </div>
+//     </div>
+//   );
+// }
