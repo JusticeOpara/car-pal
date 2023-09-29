@@ -7,12 +7,15 @@ import { useRouter } from "next/navigation";
 const Login = () => {
   const { data: session } = useSession();
   const router = useRouter();
+  
   useEffect(() => {
-    console.log("session:", session);
+    console.log("--session:", session);
     if (session?.user) {
       router.push("/");
     }
+
   }, [session,router]);
+
 
   return (
     <div

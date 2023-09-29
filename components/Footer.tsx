@@ -5,7 +5,7 @@ import { footerLinks } from "../constants"
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col text-gray-300  mt-5 border-t border-gray-100">
+    <footer className="flex flex-col text-gray-300 mt-5 border-t border-gray-100">
 
       <div className="flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-16 py-10">
 
@@ -34,7 +34,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="flex justify-between flex-wrap items-center mt-10 border-t border-gray-100 sm:px-16 px-6 py-10">
+      <div className="flex justify-between flex-wrap items-center mt-5 sm:px-16 px-6 py-10">
         <p>@2023 CarPal. All Rights Reserved </p>
 
         <div className="footer__copyrights-link ">
